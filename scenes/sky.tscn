@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqgxxvbbm3tb7"]
+[gd_scene load_steps=4 format=3 uid="uid://cqgxxvbbm3tb7"]
 
 [ext_resource type="Texture2D" uid="uid://dm73qftnuig8k" path="res://assets/sky/Clouds/Clouds 1/1.png" id="1_k1tqj"]
 [ext_resource type="Texture2D" uid="uid://blab0sanduun1" path="res://assets/sky/Clouds/Clouds 1/4.png" id="2_qk45w"]
+[ext_resource type="PackedScene" uid="uid://v5bdel60begx" path="res://scenes/airplane.tscn" id="3_3hy4n"]
 
 [node name="Sky" type="Node2D"]
 
@@ -20,3 +21,7 @@ position = Vector2(1006, 560)
 scale = Vector2(0.2, 0.2)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
+
+[node name="Airplane" parent="." instance=ExtResource("3_3hy4n")]
+position = Vector2(336, 524)
+scale = Vector2(0.6, 0.6)

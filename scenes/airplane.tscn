@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://v5bdel60begx"]
+
+[ext_resource type="Texture2D" uid="uid://dr58bkfd067vp" path="res://assets/airplane.png" id="1_gmati"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_vl3ih"]
+points = PackedVector2Array(-268, 153, -394, 67, -370, -186, 293, -30, 328, 151, -30, 181)
+
+[node name="Airplane" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_gmati")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_vl3ih")
