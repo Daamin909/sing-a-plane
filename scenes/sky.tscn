@@ -1,27 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqgxxvbbm3tb7"]
+[gd_scene load_steps=5 format=3 uid="uid://cqgxxvbbm3tb7"]
 
-[ext_resource type="Texture2D" uid="uid://dm73qftnuig8k" path="res://assets/sky/Clouds/Clouds 1/1.png" id="1_k1tqj"]
-[ext_resource type="Texture2D" uid="uid://blab0sanduun1" path="res://assets/sky/Clouds/Clouds 1/4.png" id="2_qk45w"]
+[ext_resource type="Script" uid="uid://cwl7jke7yxyt4" path="res://scripts/main.gd" id="1_3hy4n"]
 [ext_resource type="PackedScene" uid="uid://v5bdel60begx" path="res://scenes/airplane.tscn" id="3_3hy4n"]
+[ext_resource type="PackedScene" uid="uid://dg5e6q25vnuno" path="res://scenes/background.tscn" id="3_v26od"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qk45w"]
+size = Vector2(2212, 302)
 
 [node name="Sky" type="Node2D"]
-
-[node name="1" type="Sprite2D" parent="."]
-position = Vector2(1008.99994, 565.99994)
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("1_k1tqj")
-
-[node name="4" type="Sprite2D" parent="."]
-position = Vector2(1024.0001, 569)
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("2_qk45w")
+script = ExtResource("1_3hy4n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1006, 560)
-scale = Vector2(0.2, 0.2)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
+[node name="Background" parent="Camera2D" instance=ExtResource("3_v26od")]
+z_index = -1
+position = Vector2(-5, 0)
+
 [node name="Airplane" parent="." instance=ExtResource("3_3hy4n")]
+z_index = 1
 position = Vector2(336, 524)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.3, 0.3)
+
+[node name="bottom_boundary" type="Area2D" parent="."]
+position = Vector2(-135, 1411)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_boundary"]
+position = Vector2(1096, -141)
+shape = SubResource("RectangleShape2D_qk45w")
+
+[node name="top_boundary" type="Area2D" parent="."]
+position = Vector2(-3, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top_boundary"]
+position = Vector2(1096, -141)
+shape = SubResource("RectangleShape2D_qk45w")
+
+[connection signal="body_entered" from="bottom_boundary" to="." method="_on_bottom_boundary_body_entered"]
+[connection signal="body_entered" from="top_boundary" to="." method="_on_top_boundary_body_entered"]
