@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqgxxvbbm3tb7"]
+
+[ext_resource type="Texture2D" uid="uid://dm73qftnuig8k" path="res://assets/sky/Clouds/Clouds 1/1.png" id="1_k1tqj"]
+[ext_resource type="Texture2D" uid="uid://blab0sanduun1" path="res://assets/sky/Clouds/Clouds 1/4.png" id="2_qk45w"]
+
+[node name="Sky" type="Node2D"]
+
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(1008.99994, 565.99994)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_k1tqj")
+
+[node name="4" type="Sprite2D" parent="."]
+position = Vector2(1024.0001, 569)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("2_qk45w")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1006, 560)
+scale = Vector2(0.2, 0.2)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
