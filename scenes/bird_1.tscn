@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://c15vnav7qtitw"]
+
+[ext_resource type="Script" uid="uid://diuftj20ilxwr" path="res://scripts/bird.gd" id="1_6fydy"]
+[ext_resource type="Texture2D" uid="uid://b3sk5lhocjwda" path="res://assets/birds/3.png" id="1_lhu2p"]
+[ext_resource type="Texture2D" uid="uid://c4c2fw78r07mj" path="res://assets/birds/5.png" id="3_fe3q6"]
+[ext_resource type="Texture2D" uid="uid://ddrhggp3ypyii" path="res://assets/birds/4.png" id="4_2xvgv"]
+[ext_resource type="Texture2D" uid="uid://dp87ft5s265w7" path="res://assets/birds/2.png" id="5_d08we"]
+[ext_resource type="Texture2D" uid="uid://4ly6vs8mles3" path="res://assets/birds/1.png" id="6_xrae8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6fydy"]
+radius = 184.04347
+
+[node name="bird_1" type="CharacterBody2D"]
+script = ExtResource("1_6fydy")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(8, 11)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6fydy")
+
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(5, 5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_lhu2p")
+
+[node name="2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(14, 10)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("3_fe3q6")
+
+[node name="3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2, 5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_2xvgv")
+
+[node name="4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2, 6)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_d08we")
+
+[node name="5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(4, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_xrae8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
