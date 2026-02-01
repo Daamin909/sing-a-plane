@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc3buqkgr5fkn"]
+
+[ext_resource type="Script" uid="uid://bnxrep3ka7w42" path="res://scripts/start_menu.gd" id="1_h61rw"]
+[ext_resource type="Texture2D" uid="uid://br63s3sb6u2us" path="res://assets/singaplane.jpg" id="1_ouf4f"]
+[ext_resource type="FontFile" uid="uid://rk1hj0602d3c" path="res://assets/font.ttf" id="2_thu50"]
+[ext_resource type="AudioStream" uid="uid://bexkcg1iykg5d" path="res://assets/bgm.mp3" id="3_m7x51"]
+
+[node name="start" type="Node2D"]
+script = ExtResource("1_h61rw")
+
+[node name="Singaplane" type="Sprite2D" parent="."]
+position = Vector2(16.999996, 42)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("1_ouf4f")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -235.0
+offset_top = 294.0
+offset_right = 202.0
+offset_bottom = 491.0
+theme_override_colors/font_color = Color(0, 1, 0.52156866, 1)
+theme_override_fonts/font = ExtResource("2_thu50")
+theme_override_font_sizes/font_size = 140
+text = "START"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -528.0
+offset_top = -514.0
+offset_right = 432.0
+offset_bottom = -306.0
+theme_override_colors/font_color = Color(0.7019608, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_thu50")
+theme_override_font_sizes/font_size = 200
+text = "SING-A-PLANE"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_m7x51")
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

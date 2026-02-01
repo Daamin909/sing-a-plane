@@ -19,9 +19,7 @@ func _ready() -> void:
 
 func _spawn_bird() -> void:
 	var bird: Node2D = scene.instantiate()
-	
 	var scenes: Array[Node] = bird.get_children()
-
 	for child in bird.get_children():
 		if child is CanvasItem:
 			scenes.append(child)

@@ -17,5 +17,5 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
+	if body is CharacterBody2D and body.name == "Airplane":
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn") # Replace with function body.

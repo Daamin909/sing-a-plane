@@ -1,18 +1,24 @@
 extends Node2D
 
+@onready var player := $b
+@onready var lyric_label := $Label
 
-func _ready() -> void:
-	pass 
-
-
-func _process(delta: float) -> void:
-	pass
+var lyrics := []
+var index := 0
 
 
-func _on_top_boundary_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
-		get_tree().change_scene_to_file("res://scenes/game_over.tscn") # Replace with function body.
 
-func _on_bottom_boundary_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
-		get_tree().change_scene_to_file("res://scenes/game_over.tscn") # Replace with function body.
+
+func _ready():
+	lyrics = LRCParser.new().parse_lrc("res://assets/lyrics.lrc")
+	player.play()
+	
+	
+func _process(_delta):
+	if index >= lyrics.size():
+		return
+
+	var t = player.get_playback_position()
+	if t >= lyrics[index].time:
+		lyric_label.text = lyrics[index].text
+		index += 1
